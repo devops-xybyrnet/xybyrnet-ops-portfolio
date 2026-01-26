@@ -2,110 +2,77 @@
 
 ## Purpose
 
-xybyrnet is a **baseline Linux server architecture** designed to prioritize
-stability, repeatability, and operational clarity while serving as a
-learning platform for foundational system administration skills.
+xybyrnet is a baseline Linux server architecture designed to be secure, repeatable, and hardware-agnostic.
 
-The primary goal is not abstraction or scale, but **mastery of fundamentals**
-on a live system that evolves over time.
+Its primary purpose is to provide a **stable operational core** upon which services, containers, and automation can be deployed without rethinking foundational system design each time.
 
----
-
-## Core Principles
-
-### 1. Linux-First, Minimal by Design
-- Ubuntu LTS as the base operating system
-- No GUI on servers
-- CLI-driven administration only
-- Minimal installed packages
-
-**Why:**  
-Understanding the operating system itself is non-negotiable for long-term
-operations competence.
+This architecture exists first as a **learning system**, and second as a **production-capable platform**.
 
 ---
 
-### 2. Repeatable Architecture
-- Identical baseline configuration across systems where possible
-- Consistent directory structures
-- Standardized user roles and permissions
-- Configuration documented before automation
+## Design Philosophy
 
-**Why:**  
-Repeatability reduces cognitive load, error rates, and recovery time.
+xybyrnet is built around the following principles:
 
----
+- **Simplicity over complexity**
+- **Stability over novelty**
+- **Observability over abstraction**
+- **Documentation over assumption**
+- **Repeatability over customization**
 
-### 3. Observability Over Abstraction
-- Native tools preferred (`journalctl`, `systemctl`, `df`, `uptime`)
-- Logs preserved and reviewed
-- System state is visible, not hidden behind dashboards
-
-**Why:**  
-Operators should understand what the system is doing without relying on
-third-party tooling.
+The system favors proven Linux tooling and long-term support releases to ensure consistency across environments and time.
 
 ---
 
-### 4. Automation Comes After Understanding
-- Manual workflows are documented first
-- Automation mirrors documented human actions
-- Bash and Python favored for transparency
+## Core Architecture Model
 
-**Why:**  
-Automation without understanding creates fragile systems.
+The xybyrnet model consists of:
 
----
+- A minimal Ubuntu LTS installation
+- SSH-first, headless operation
+- Strict user separation and access control
+- Centralized logging and auditability
+- Predictable filesystem layout
+- Automation-friendly configuration
 
-### 5. Hardware-Agnostic Design
-- Designed to run on older, reliable hardware
-- No dependency on specialized CPUs or GPUs
-- Containers inherit the same baseline assumptions as the core system
-
-**Why:**  
-Skills should transfer across environments, not depend on hardware.
+All systems built on xybyrnet follow the same baseline patterns, allowing services and containers to interoperate cleanly without special handling.
 
 ---
 
-## xybyrnet Core vs Projects
+## Hardware Independence
 
-### xybyrnet Core
-- Operating system
-- Users and access control
-- Networking
-- Logging and auditing
-- Backup and health checks
+xybyrnet is intentionally **not hardware-dependent**.
 
-This layer changes **slowly**.
+The architecture is designed to run effectively on:
+- Older, reliable hardware
+- Virtual machines
+- Modern commodity systems
 
-### Projects
-- Bots
-- Services
-- Integrations
-- Experiments
-
-Projects are **disposable**.  
-The core is not.
+This enables reuse of otherwise obsolete equipment while maintaining operational consistency.
 
 ---
 
-## What xybyrnet Is Not
+## Scope and Boundaries
 
-- Not a cloud platform
-- Not a Kubernetes-first system
-- Not optimized for scale
-- Not a product framework (yet)
+xybyrnet **does not** attempt to be:
+- A full platform-as-a-service
+- A monolithic orchestration layer
+- A performance-optimized compute cluster
 
-xybyrnet exists to build **competence before complexity**.
+It **does** aim to be:
+- A reliable control plane
+- A teaching system for foundational Linux operations
+- A documented, auditable baseline for real services
 
 ---
 
 ## Evolution
 
-xybyrnet is expected to evolve, but changes are:
+xybyrnet is expected to evolve.
+
+Changes to the architecture are:
 - Intentional
 - Documented
 - Auditable
 
-Learning is the output.  
-Stability is the constraint.
+Historical decisions are preserved to show progression, not perfection.
