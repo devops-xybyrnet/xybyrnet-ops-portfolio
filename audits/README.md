@@ -2,69 +2,65 @@
 
 ## Purpose
 
-The audit system documents the **operational state, changes, and health** of xybyrnet over time.
+The audits section documents **repeatable verification processes** used to
+confirm the health, stability, and security posture of the xybyrnet system.
 
-Audits exist to provide:
-- Accountability
-- Traceability
-- Proof of active system administration
-
-This is a living record of how the system is actually operated.
-
----
-
-## What Is Audited
-
-Audits may include, but are not limited to:
-
-- System health snapshots (uptime, load, disk, memory)
-- Configuration changes
-- Security-related events
-- Backup verification
-- Service state verification
-- Access and authentication changes
-
-Audits favor **simple, repeatable commands** over complex tooling.
+Audits are not reactive incident reports.
+They are proactive, scheduled checks designed to surface issues early and
+create an operational feedback loop.
 
 ---
 
 ## Audit Philosophy
 
-- Audits are **manual-first**, automation-assisted
-- Logs reflect reality, not best-case assumptions
-- Failures are documented, not hidden
-- Consistency matters more than frequency
-
-An incomplete audit is better than no audit.
-
----
-
-## Audit Sources
-
-Audit data may be sourced from:
-
-- `journalctl`
-- `systemctl`
-- `df`
-- `uptime`
-- Custom logging scripts
-- Structured admin logs from jr-admin-ops
+- Prefer simple, native tools over complex frameworks
+- Favor visibility and traceability over automation magic
+- Audits must be:
+  - Repeatable
+  - Timestamped
+  - Verifiable
+  - Non-destructive
 
 ---
 
-## Retention and Integrity
+## Audit Categories
 
-Audit records are:
-- Version-controlled
-- Timestamped
-- Immutable once committed
+### System Health
+- Disk usage and growth trends
+- Memory and load averages
+- Uptime and reboot tracking
 
-This repository serves as the historical record.
+### Service State
+- Active and failed services
+- Restart frequency
+- Dependency health
+
+### Logs & Integrity
+- Journal consistency
+- Error frequency
+- Unexpected service behavior
+
+### Security Baseline
+- Unauthorized access attempts
+- Account changes
+- Service exposure review
 
 ---
 
-## Relationship to Operations
+## Audit Cadence
 
-Audits do not replace operations — they **validate** them.
+Audits are performed on a **defined schedule**:
+- Daily: quick health and service checks
+- Weekly: deeper log and integrity review
+- Event-based: after configuration or service changes
 
-Operational changes should result in audit entries.
+---
+
+## Output
+
+Audit outputs are preserved as:
+- Logs
+- Snapshots
+- Summaries
+
+Validated results are referenced in the `evidence/` directory.
