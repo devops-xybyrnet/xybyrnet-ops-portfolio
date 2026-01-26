@@ -2,116 +2,69 @@
 
 ## Purpose
 
-Audits in xybyrnet exist to create **accountability, visibility, and trust**
-in a live operating system.
+The audit system documents the **operational state, changes, and health** of xybyrnet over time.
 
-This directory documents **what is checked, when it is checked, and why**.
-The actual logs may live elsewhere, but the audit standard lives here.
+Audits exist to provide:
+- Accountability
+- Traceability
+- Proof of active system administration
 
----
-
-## What an Audit Means in xybyrnet
-
-An audit is a **repeatable review of system state** to verify that:
-
-- The system is healthy
-- Security controls are intact
-- Backups are occurring
-- No unexpected changes have occurred
-
-Audits are not reactive.
-They are **routine and expected**.
+This is a living record of how the system is actually operated.
 
 ---
 
-## Audit Categories
+## What Is Audited
 
-### 1. System Health Audits
-Focus: Availability and resource usage.
+Audits may include, but are not limited to:
 
-Typical checks:
+- System health snapshots (uptime, load, disk, memory)
+- Configuration changes
+- Security-related events
+- Backup verification
+- Service state verification
+- Access and authentication changes
+
+Audits favor **simple, repeatable commands** over complex tooling.
+
+---
+
+## Audit Philosophy
+
+- Audits are **manual-first**, automation-assisted
+- Logs reflect reality, not best-case assumptions
+- Failures are documented, not hidden
+- Consistency matters more than frequency
+
+An incomplete audit is better than no audit.
+
+---
+
+## Audit Sources
+
+Audit data may be sourced from:
+
+- `journalctl`
+- `systemctl`
+- `df`
 - `uptime`
-- Load averages
-- Disk usage (`df -h`)
-- Memory pressure
-- Thermal status (where available)
-
-Frequency:
-- Daily (light)
-- Weekly (review)
+- Custom logging scripts
+- Structured admin logs from jr-admin-ops
 
 ---
 
-### 2. Security & Access Audits
-Focus: Unauthorized access and configuration drift.
+## Retention and Integrity
 
-Typical checks:
-- SSH access and authentication logs
-- User accounts and permissions
-- Firewall status
-- Failed login attempts
+Audit records are:
+- Version-controlled
+- Timestamped
+- Immutable once committed
 
-Frequency:
-- Daily review
-- Immediate review on anomaly
+This repository serves as the historical record.
 
 ---
 
-### 3. Backup Verification Audits
-Focus: Data survivability.
+## Relationship to Operations
 
-Typical checks:
-- Backup job completion
-- Timestamp verification
-- Restore feasibility (spot checks)
+Audits do not replace operations — they **validate** them.
 
-Frequency:
-- Daily verification
-- Periodic restore testing
-
----
-
-### 4. Change Audits
-Focus: Intentional vs unintentional changes.
-
-Typical checks:
-- Configuration file changes
-- Service restarts
-- Package updates
-- Manual interventions
-
-Frequency:
-- Logged at time of change
-- Reviewed weekly
-
----
-
-## Logging Standard
-
-- All audits are timestamped
-- Actions are logged with intent
-- Logs favor clarity over verbosity
-- Logs are version-controlled where appropriate
-
----
-
-## Why Audits Matter
-
-Audits demonstrate:
-- Operational discipline
-- Security awareness
-- Professional habits
-- Readiness for production environments
-
-This audit framework mirrors real-world expectations
-for junior system administrators and operations engineers.
-
----
-
-## Evolution
-
-Audit scope will expand as the system grows.
-
-New audit categories are added only when:
-- The system justifies them
-- They can be performed consistently
+Operational changes should result in audit entries.
